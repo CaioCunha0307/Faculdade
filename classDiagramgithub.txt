@@ -1,0 +1,72 @@
+classDiagram
+    direction LR
+
+    subgraph "USUÁRIOS (USERS)"
+        class Usuario {
+          <<Abstrata>>
+          idUsuario
+          nome
+          email
+          status
+        }
+        class Aluno {
+          matricula
+          curso
+        }
+        class Professor {
+          idFuncional
+          departamento
+        }
+        class Funcionario {
+          idFuncional
+          cargo
+        }
+    end
+
+    subgraph "ACERVO (COLLECTION)"
+        class Livro {
+          ISBN
+          titulo
+          autor
+          editora
+        }
+        class Exemplar {
+          idExemplar
+          status
+        }
+    end
+
+    subgraph "TRANSAÇÕES (TRANSACTIONS)"
+        class Emprestimo {
+          idEmprestimo
+          dataEmprestimo
+          dataPrevistaDevolucao
+          status
+        }
+        class Reserva {
+          idReserva
+          dataReserva
+          status
+        }
+        class Multa {
+          idMulta
+          valor
+          dataGeracao
+          status
+        }
+    end
+
+    ' Generalização / Especialização
+    Usuario <|-- Aluno
+    Usuario <|-- Professor
+    Usuario <|-- Funcionario
+
+    ' Associações
+    Usuario "1" -- "0..*" Emprestimo : "realiza"
+    Usuario "1" -- "0..*" Reserva : "faz"
+    
+    Livro "1" -- "1..*" Exemplar : "possui"
+    Livro "1" -- "0..*" Reserva : "pode ser objeto de"
+    
+    Emprestimo "1" -- "1..*" Exemplar : "contém"
+    Emprestimo "1" -- "0..1" Multa : "pode gerar"
