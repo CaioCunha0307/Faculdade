@@ -1,8 +1,5 @@
-# Leitura dos dados de início
-
 dia_inicio = int(input().split()[1])
 hora_inicio, minuto_inicio, segundo_inicio = map(int, input().split(' : '))
-# Leitura dos dados de fim
 dia_fim = int(input().split()[1])
 hora_fim, minuto_fim, segundo_fim = map(int, input().split(' : '))
 total_segundos_inicio = (dia_inicio * 86400) + (hora_inicio * 3600) + \
