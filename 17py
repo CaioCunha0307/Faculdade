@@ -1,0 +1,14 @@
+valor = float(input())
+
+if 100 < valor:
+    print('Fora do intervalo') 
+elif 75 < valor:
+    print("fora do intervalo(75,100]")
+elif 50 < valor:
+    print("fora do intervalo(50,75]")
+elif 25< valor:
+    print("fora do intervalo(25,50]")
+elif 0 < valor:
+    print("fora do intervalo(0,25]")
+else:
+    print("fora do intervalo")
